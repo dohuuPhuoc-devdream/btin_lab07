@@ -30,4 +30,3 @@ function giaiPhongBoNho($link, $result)
 	} catch (TypeError $e) {
 	}
 }
-
