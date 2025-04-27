@@ -12,7 +12,7 @@ $noidung = "Chi tiết về trận đấu...";
 $tukhoa = "thể thao, bóng đá";
 $nguontin = "24h.com.vn";
 $like = 80;
-$rating = 4.5;
+$rating = 4.7;
 
 // Gán vào SQL
 $sql = "INSERT INTO tbl_bantin (id_bantin, id_danhmuc, tieude, hinhanh, noidung, tukhoa, nguontin, `like` , rating)
