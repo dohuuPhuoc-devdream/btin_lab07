@@ -15,7 +15,8 @@ $like = 80;
 $rating = 4.5;
 
 // Gán vào SQL
-$sql = "INSERT INTO tbl_bantin (id_bantin, id_danhmuc, tieude, hinhanh, noidung, tukhoa, nguontin, like, rating)
+
+$sql = "INSERT INTO tbl_bantin (id_bantin, id_danhmuc, tieude, hinhanh, noidung, tukhoa, nguontin, `like`, rating)
         VALUES ($id_bantin, $id_danhmuc, '$tieude', '$hinhanh', '$noidung', '$tukhoa', '$nguontin', $like, $rating)";
 
 $result = chayTruyVanKhongTraVeDL($link, $sql);
