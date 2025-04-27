@@ -19,24 +19,24 @@ $action = "1"; // Thay đổi thành "1", "2", "3" tùy theo truy vấn bạn mu
 
 switch($action) {
     case "1":
-        // Xóa tất cả các bình luận của bản tin có tiêu đề "Sự thay đổi cách thức mua sắm..."
-        $query = "DELETE bl FROM tbl_binhluan bl
-                  JOIN tbl_bantin bt ON bl.id_bantin = bt.id_bantin
-                  WHERE bt.tieude = 'Sự thay đổi cách thức mua sắm của khách hàng trong thời kỳ khủng hoảng điện tử'";
+        // Cập nhật tiêu đề bản tin có tiêu đề "Sự thay đổi cách thức mua sắm..." thành một tiêu đề mới
+        $query = "UPDATE tbl_bantin 
+                  SET tieude = 'Tiêu đề mới cho bản tin' 
+                  WHERE tieude = 'Sự thay đổi cách thức mua sắm của khách hàng trong thời kỳ khủng hoảng điện tử'";
         break;
     case "2":
-        // Xóa các bình luận chứa từ khóa "ngốc nghếch" về bản tin Apple
-        $query = "DELETE bl FROM tbl_binhluan bl
+        // Cập nhật nội dung các bình luận chứa từ khóa "ngốc nghếch" về bản tin Apple
+        $query = "UPDATE tbl_binhluan bl
                   JOIN tbl_bantin bt ON bl.id_bantin = bt.id_bantin
+                  SET bl.noidung = 'Nội dung mới cho bình luận'
                   WHERE bt.tieude = 'Thoái trào tất yếu của Apple trước cạnh tranh trên thị trường smartphone'
                   AND bl.noidung LIKE '%ngốc nghếch%'";
         break;
     case "3":
-        // Xóa bản tin mới thêm vào
-        $query = "DELETE FROM tbl_bantin 
-                  WHERE id_bantin = 167 
-                  AND id_danhmuc = 1 
-                  AND tieude = 'Bản tin mới về công nghệ AI'";
+        // Cập nhật nội dung bản tin mới
+        $query = "UPDATE tbl_bantin 
+                  SET tieude = 'Bản tin mới về công nghệ AI đã được cập nhật'
+                  WHERE id_bantin = 167";
         break;
     default:
         die("Không có truy vấn được chọn");
@@ -49,7 +49,7 @@ $result = chayTruyVanKhongTraVeDL($link, $query);
 if ($result) {
     echo "Thực hiện truy vấn thành công!";
     
-    // Hiển thị số hàng bị ảnh hưởng (chỉ với DELETE và UPDATE)
+    // Hiển thị số hàng bị ảnh hưởng (chỉ với UPDATE và DELETE)
     if ($action != "select") {
         echo "<br>Số hàng bị ảnh hưởng: " . mysqli_affected_rows($link);
     }
