@@ -3,19 +3,28 @@ require_once "db_module.php";
 
 taoKetNoi($link);
 
-// Câu lệnh INSERT: thêm một bản tin mới
-$sql = "INSERT INTO tbl_bantin ($id_danhmuc, $tieude, $hinhanh, $noidung, $tukhoa, $nguontin, $like, $rating)
-        VALUES (110, 1, 'Tin công nghệ mới nhất', 'tech_new.jpg', 'Nội dung tin công nghệ...', 'công nghệ, AI', 'VnExpress', 55, 4.2)";
+// Khai báo biến
+$id_bantin = 111;
+$id_danhmuc = 2;
+$tieude = "Tin thể thao nóng hổi";
+$hinhanh = "thethao.jpg";
+$noidung = "Chi tiết về trận đấu...";
+$tukhoa = "thể thao, bóng đá";
+$nguontin = "24h.com.vn";
+$like = 80;
+$rating = 4.5;
 
-// Thực thi câu lệnh
+// Gán vào SQL
+$sql = "INSERT INTO tbl_bantin (id_bantin, id_danhmuc, tieude, hinhanh, noidung, tukhoa, nguontin, like, rating)
+        VALUES ($id_bantin, $id_danhmuc, '$tieude', '$hinhanh', '$noidung', '$tukhoa', '$nguontin', $like, $rating)";
+
 $result = chayTruyVanKhongTraVeDL($link, $sql);
 
 if ($result) {
     echo "Thêm bản tin thành công!";
 } else {
-    echo "Thêm bản tin thất bại!";
+    echo "Lỗi khi thêm bản tin!";
 }
 
-// Giải phóng tài nguyên
 giaiPhongBoNho($link, $result);
 ?>
