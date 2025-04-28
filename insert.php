@@ -3,7 +3,7 @@ require_once "db_module.php";
 
 taoKetNoi($link);
 
-// Khai báo biến
+// Khai báo biến nha
 $id_bantin = 111;
 $id_danhmuc = 2;
 $tieude = "Tin thể thao nóng hổi";
